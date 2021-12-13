@@ -48,7 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     {
-      allWordPressPost(limit: 10) {
+      allWordPressPost(limit: 11) {
         edges {
           node {
             id

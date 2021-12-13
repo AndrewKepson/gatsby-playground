@@ -8,6 +8,10 @@ export const useWordPressPosts = () => {
           node {
             id
             slug
+            author
+            excerpt {
+              rendered
+            }
             yoast_head_json {
               title
             }

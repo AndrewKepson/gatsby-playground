@@ -1,21 +1,22 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import { useWordPressPosts } from '../../hooks/useWordPressPosts'
+
+import BlogPostCard from './BlogPostCard'
 
 export default function DIYWordPressContent() {
   const data = useWordPressPosts()
 
-  const posts = data.allWordPressPost.edges.map(post => post.node)
+  const posts = data.allWordPressPost.edges
+    .map(post => post.node)
+    .filter((post, i) => i !== 2)
 
   return (
     <section className="p-6 md:px-12">
-      <ul>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {posts.map(post => (
-          <li className="text-lg text-gray-800 hover:text-purple-800">
-            <Link to={`/${post.slug}`}>{post.yoast_head_json.title}</Link>
-          </li>
+          <BlogPostCard key={post.id} post={post} />
         ))}
-      </ul>
+      </div>
     </section>
   )
 }

@@ -1,7 +1,8 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 
 import Layout from '../components/layout'
+import Seo from '../components/seo'
 
 export default function WordPressPost({
   data: {
@@ -16,8 +17,15 @@ export default function WordPressPost({
 }) {
   return (
     <Layout>
-      <h1>{title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: content }} />
+      <Seo title={title} />
+      <div className="text-gray-500 text-md">
+        <Link to="/data-layer/diy-headless-wordpress">Back to Blog Index</Link>
+      </div>
+      <h1 id="post-title">{title}</h1>
+      <p id="post-author" className="text-lg text-gray-700">
+        {author}
+      </p>
+      <div id="post-content" dangerouslySetInnerHTML={{ __html: content }} />
     </Layout>
   )
 }
